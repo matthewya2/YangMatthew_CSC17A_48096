@@ -18,7 +18,11 @@ using namespace std;
 //Program Execution Begins Here
 int main(int argc, char** argv) {
     //Declare all Variables Here
-    
+    int a;
+    int *ptr;
+    ptr=&a;
+    *ptr=*&a;
+    cout << ptr;
     //Input or initialize values Here
     
     //Process-Calculations Here
