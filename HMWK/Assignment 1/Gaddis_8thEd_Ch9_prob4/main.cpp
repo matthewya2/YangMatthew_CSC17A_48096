@@ -16,8 +16,8 @@ using namespace std;
 
 
 //Function Prototypes Here
-void sort(int*,int,string[]);
-void average(int*,int);
+void sort2(int*,int,string[]);
+void average2(int*,int);
 //Program Execution Begins Here
 int main(int argc, char** argv) {
     //Declare all Variables Here
@@ -40,16 +40,16 @@ int main(int argc, char** argv) {
     }
     
     
-    sort(scores,userI,names);
+    sort2(scores,userI,names);
     
-    average(scores, userI);
+    average2(scores, userI);
     
     delete [] scores;
     delete [] names;
     //Exit
     return 0;
 }
-void sort(int *scores,int userI,string names[]){
+void sort2(int *scores,int userI,string names[]){
     string storage="";
     cout <<"~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~"<<endl<<
             "Scores that are set in ascending order:"<<endl;
@@ -73,7 +73,7 @@ void sort(int *scores,int userI,string names[]){
     }
     cout <<endl;
 }
-void average(int*scores,int userI){
+void average2(int*scores,int userI){
     float average=0;
     
     cout <<"While the average is:"<<endl;

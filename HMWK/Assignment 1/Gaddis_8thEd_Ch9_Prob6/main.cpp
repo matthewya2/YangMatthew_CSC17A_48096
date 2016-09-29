@@ -16,39 +16,42 @@ using namespace std;
 
 //Function Prototypes Here
 void arrSelectSort(int *[], int);
- void showArray(const int [], int);
- void showArrPtr(int *[], int);
+void showArray(const int [], int);
+void showArrPtr(int *[], int);
 
- int main()
- {
- const int NUM_DONATIONS = 15; // Number of donations
-
+ int main(){
+ int num_donations;
+     cout << "what is the number of donations?"<<endl;
+     cin>>num_donations;
+     
+     int donations[num_donations];
+     
+     cout<<"input the donations one at a time"<<endl;
+     for (int i=0;i<num_donations;i++){
+         cin >>donations[i];
+     }
  // An array containing the donation amounts.
- int donations[NUM_DONATIONS] = { 5, 100, 5, 25, 10,
- 5, 25, 5, 5, 100,
- 10, 15, 10, 5, 10 };
+ 
 
  // An array of pointers to int.
- int *arrPtr[NUM_DONATIONS] = { nullptr, nullptr, nullptr, nullptr, nullptr,
- nullptr, nullptr, nullptr, nullptr, nullptr,
- nullptr, nullptr, nullptr, nullptr, nullptr };
+ int *arrPtr[num_donations];
 
  // Each element of arrPtr is a pointer to int. Make each
  // element point to an element in the donations array.
- for (int count = 0; count < NUM_DONATIONS; count++)
- arrPtr[count] = &donations[count];
+ for (int count = 0; count < num_donations; count++)
+    arrPtr[count] = &donations[count];
 
  // Sort the elements of the array of pointers.
- arrSelectSort(arrPtr, NUM_DONATIONS);
+ arrSelectSort(arrPtr, num_donations);
 
  // Display the donations using the array of pointers. This
  // will display them in sorted order.
  cout << "The donations, sorted in ascending order are: \n";
- showArrPtr(arrPtr, NUM_DONATIONS);
+ showArrPtr(arrPtr, num_donations);
 
  // Display the donations in their original order.
  cout << "The donations, in their original order are: \n";
- showArray(donations, NUM_DONATIONS);
+ showArray(donations, num_donations);
  return 0;
  }
  //****************************************************************
@@ -62,23 +65,20 @@ void arrSelectSort(int *[], int);
 
  void arrSelectSort(int *arr[], int size)
  {
- int startScan, minIndex;
- int *minElem;
+    int startScan, minIndex;
+    int *minElem;
 
- for (startScan = 0; startScan < (size - 1); startScan++)
- {
- minIndex = startScan;
- minElem = arr[startScan];
- for(int index = startScan + 1; index < size; index++)
- {
- if (*(arr[index]) < *minElem)
- {
- minElem = arr[index];
- minIndex = index;
- }
- }
- arr[minIndex] = arr[startScan];
- arr[startScan] = minElem;
+    for (startScan = 0; startScan < (size - 1); startScan++){
+        minIndex = startScan;
+        minElem = arr[startScan];
+    for(int index = startScan + 1; index < size; index++){
+        if (*(arr[index]) < *minElem){
+            minElem = arr[index];
+            minIndex = index;
+        }
+    }
+    arr[minIndex] = arr[startScan];
+    arr[startScan] = minElem;
 }
  }
 
@@ -88,11 +88,10 @@ void arrSelectSort(int *[], int);
  // number of elements. *
  //***********************************************************
 
- void showArray(const int arr[], int size)
- {
- for (int count = 0; count < size; count++)
- cout << arr[count] << " ";
- cout << endl;
+ void showArray(const int arr[], int size){
+    for (int count = 0; count < size; count++)
+        cout << arr[count] << " ";
+    cout << endl;
  }
 
  //***************************************************************
@@ -102,7 +101,7 @@ void arrSelectSort(int *[], int);
  //***************************************************************
  void showArrPtr(int *arr[], int size)
  {
- for (int count = 0; count < size; count++)
- cout << *(arr[count]) << " ";
- cout << endl;
+    for (int count = 0; count < size; count++)
+        cout << *(arr[count]) << " ";
+        cout << endl;
  }

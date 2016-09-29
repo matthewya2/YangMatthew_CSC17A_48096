@@ -16,8 +16,8 @@ using namespace std;
 //Like PI, e, Gravity, or conversions
 
 //Function Prototypes Here
-void sort(int*,int);
-void average(int*,int);
+void sort1(int*,int);
+void average1(int*,int);
 //Program Execution Begins Here
 int main(int argc, char** argv) {
     //Declare all Variables Here
@@ -38,15 +38,15 @@ int main(int argc, char** argv) {
         }
     }
     
-    sort(scores, userI);
+    sort1(scores, userI);
     
-    average(scores, userI);
+    average1(scores, userI);
     
     delete [] scores;
     //Exit
     return 0;
 }
-void sort(int *scores,int userI){
+void sort1(int *scores,int userI){
     
     cout <<"~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~"<<endl<<
             "Scores that are set in ascending order:"<<endl;
@@ -64,7 +64,7 @@ void sort(int *scores,int userI){
     }
     cout <<endl;
 }
-void average(int*scores,int userI){
+void average1(int*scores,int userI){
     float average=0;
     
     cout <<"While the average is:"<<endl;
