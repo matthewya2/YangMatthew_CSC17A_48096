@@ -44,14 +44,14 @@ int main(int argc, char** argv) {
     return 0;
 }
 void destroy(Array *a){
-    delete (*a).data; HERE!
+    delete [] (*a).data; 
     delete a;
 }
 
 void prntAry(Array *a,int perLine){
     cout<<endl;
     for(int i=0;i<(*a).size;i++){
-        cout<<(*a).data[i]<<" ";
+        cout<< *((*a).data+i) <<" ";
         if(i%perLine==(perLine-1))cout<<endl;
     }
     cout<<endl;
@@ -62,8 +62,7 @@ Array *fillAry(int n){
     (*a).size=n;
     (*a).data=new int[n];
     for(int i=0;i<n;i++){
-        (*a).data[i]=rand()%90+10;//Random 2 digit numbers
+        *((*a).data+i)=rand()%90+10;//Random 2 digit numbers
     }
     return a;
 }
-
