@@ -17,13 +17,10 @@ using namespace std;
 
 //Function Prototypes Here
 struct Sales{
-    string name;
-    float first;
-    float second;
-    float third;
-    float fourth;
-    float total;
-    float average;
+    float totalR;
+    float tempH;
+    float tempL;
+    float avrgTmp;
 };
 
 void print(Sales);
