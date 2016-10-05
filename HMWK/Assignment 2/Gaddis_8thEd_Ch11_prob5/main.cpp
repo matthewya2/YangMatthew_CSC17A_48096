@@ -2,17 +2,7 @@
  * File:   main.cpp
  * Author: Dr. Mark E. Lehr
  * Created on July 19, 2016, 9:07 AM
- * Purpose:  The program should have an array of 12 structures 
- * to hold weather data for an entire year. When the program runs,
- *  it should ask the user to enter data for each month. 
- * (The average temperature should be calculated.) Once the data 
- * are entered for all the months, the program should calculate 
- * and display the average monthly rainfall, the total rainfall 
- * for the year, the highest and lowest temperatures for the year 
- * (and the months they occurred in), and the average of all the 
- * monthly average temperatures.
-Input Validation: Only accept temperatures within the range 
- * between –100 and +140 degrees Fahrenheit.
+ * Purpose:  same as previous problem, but with enumerated stuff
  */
 
 //System Libraries Here
@@ -32,6 +22,8 @@ struct Weather{
     float tempL;        //lowest ""
     float avrgTmp;      //average temp for the month
 };
+enum Month{JANUARY,FEBRUARY,MARCH,APRIL,MAY,JUNE,JULY,AUGUST,
+                                SEPTEMBER,OCTOBER,NOVEMBER,DECEMBER};
 
 //Program Execution Begins Here
 int main(int argc, char** argv) {
@@ -41,11 +33,11 @@ int main(int argc, char** argv) {
     float totalYR=0;        //total yearly rain
     float avgMR;            //average monthly rain
     float avgAvgM=0;        //average of the average monthly temperature
-    int monthH, monthL; //month where the highest temp is and lowest temp
+    int monthH=0, monthL=0; //month where the highest temp is and lowest temp
     int lowT;           //highest temp
     int highT;          //lowest temp
     
-    for(i=0;i<MONTHS;i++){
+    for(i=JANUARY;i<=DECEMBER;i++){
     cout << "What is the total rain for month "<< i+1 <<"?"<<endl;
     cin >> weather[i].totalMR;
     
@@ -72,15 +64,15 @@ int main(int argc, char** argv) {
     }while(weather[i].tempL<=(-100) || weather[i].tempL>=140);
     }
     
-    for(i=0;i<MONTHS;i++){        //average temperature of the month
+    for(i=JANUARY;i<=DECEMBER;i++){        //average temperature of the month
     weather[i].avrgTmp=(weather[i].tempL+weather[i].tempH) / 2;
     }
     
-    for(i=0;i<MONTHS;i++){
+    for(i=JANUARY;i<=DECEMBER;i++){
         totalYR+=weather[i].totalMR; 
     }
     
-    for(i=0;i<MONTHS;i++){
+    for(i=JANUARY;i<=DECEMBER;i++){
         avgAvgM+=weather[i].avrgTmp;        
     }
     
@@ -88,32 +80,19 @@ int main(int argc, char** argv) {
     avgMR=totalYR/MONTHS;
     
     
-    lowT=weather[0].tempL;
-    highT=weather[0].tempH;
-    for(i=0;i<MONTHS-1;i++){       
-        if(lowT<weather[i+1].tempL){
-            monthL=i;
-        }
-        if (lowT>weather[i+1].tempL){
+    lowT=weather[JANUARY].tempL;
+    highT=weather[JANUARY].tempH;
+    for(i=JANUARY;i<DECEMBER;i++){       
+        if(lowT>weather[i+1].tempL){
             lowT=weather[i+1].tempL;
             monthL=(i+1);
         }
-        if(lowT==weather[i+1].tempL){
-            monthL=i;
-        }
         
-        if(highT>weather[i+1].tempH){          
-            monthH=i;
-        }
         if(highT<weather[i+1].tempH){
             highT=weather[i+1].tempH;
             monthH=(i+1);
         }
-        if(highT==weather[i+1].tempH){
-            monthH=i;
-        }
     }
-    
 
     cout <<endl;
     cout <<"~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~"<<endl;

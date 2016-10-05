@@ -41,7 +41,7 @@ int main(int argc, char** argv) {
     float totalYR=0;        //total yearly rain
     float avgMR;            //average monthly rain
     float avgAvgM=0;        //average of the average monthly temperature
-    int monthH, monthL; //month where the highest temp is and lowest temp
+    int monthH=0, monthL=0; //month where the highest temp is and lowest temp
     int lowT;           //highest temp
     int highT;          //lowest temp
     
@@ -91,29 +91,16 @@ int main(int argc, char** argv) {
     lowT=weather[0].tempL;
     highT=weather[0].tempH;
     for(i=0;i<MONTHS-1;i++){       
-        if(lowT<weather[i+1].tempL){
-            monthL=i;
-        }
-        if (lowT>weather[i+1].tempL){
+        if(lowT>weather[i+1].tempL){
             lowT=weather[i+1].tempL;
             monthL=(i+1);
         }
-        if(lowT==weather[i+1].tempL){
-            monthL=i;
-        }
         
-        if(highT>weather[i+1].tempH){          
-            monthH=i;
-        }
         if(highT<weather[i+1].tempH){
             highT=weather[i+1].tempH;
             monthH=(i+1);
         }
-        if(highT==weather[i+1].tempH){
-            monthH=i;
-        }
     }
-    
 
     cout <<endl;
     cout <<"~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~"<<endl;
