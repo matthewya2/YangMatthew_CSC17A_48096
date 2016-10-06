@@ -26,7 +26,7 @@ struct Sales{
     float average;
 };
 
-void print(Sales);
+void print3(Sales);
 //Program Execution Begins Here
 int main(int argc, char** argv) {
     Sales north;
@@ -116,18 +116,18 @@ int main(int argc, char** argv) {
     west.average=west.total/4;
     count=0;
    
-    print(north);
+    print3(north);
     
-    print(east);
+    print3(east);
     
-    print(south);
+    print3(south);
     
-    print(west);
+    print3(west);
     //Exit
     return 0;
 }
 
-void print( Sales div ){
+void print3( Sales div ){
     
     cout <<endl;
     cout <<"~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~"<<endl;

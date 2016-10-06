@@ -16,7 +16,7 @@ using namespace std;
 //Like PI, e, Gravity, or conversions
 
 //Function Prototypes Here
-struct Weather{
+struct Weather1{
     float totalMR;      //total monthly rain
     float tempH;        //highest temp for the month
     float tempL;        //lowest ""
@@ -28,7 +28,7 @@ enum Month{JANUARY,FEBRUARY,MARCH,APRIL,MAY,JUNE,JULY,AUGUST,
 //Program Execution Begins Here
 int main(int argc, char** argv) {
     const int MONTHS=12;
-    Weather weather[MONTHS];
+    Weather1 weather[MONTHS];
     short i;  //counter
     float totalYR=0;        //total yearly rain
     float avgMR;            //average monthly rain

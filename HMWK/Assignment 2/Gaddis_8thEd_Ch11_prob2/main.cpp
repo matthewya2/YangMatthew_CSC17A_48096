@@ -16,7 +16,7 @@ using namespace std;
 //Like PI, e, Gravity, or conversions
 
 //Function Prototypes Here
-struct MovieData{
+struct MovieData2{
     string Title;
     string Directr;
     unsigned short YearRel;    
@@ -25,11 +25,11 @@ struct MovieData{
     float yr1pay;
 };
 
-void print(MovieData);
+void print2(MovieData2);
 //Program Execution Begins Here
 int main(int argc, char** argv) {
-    MovieData firstM;
-    MovieData secondM;
+    MovieData2 firstM;
+    MovieData2 secondM;
     
     
     cout << "What is the Title of the first movie?"<<endl;
@@ -59,15 +59,15 @@ int main(int argc, char** argv) {
     cout <<"what was the first year revenue of this movie?";
     cin >>secondM.yr1pay;
     
-    print(firstM);
+    print2(firstM);
     
-    print(secondM);
+    print2(secondM);
     
     //Exit
     return 0;
 }
 
-void print( MovieData md ){
+void print2( MovieData2 md ){
     float year1P;
     
     year1P=md.yr1pay-md.cost;
