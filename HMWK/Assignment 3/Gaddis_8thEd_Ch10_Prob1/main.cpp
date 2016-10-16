@@ -15,37 +15,36 @@ using namespace std;
 //Like PI, e, Gravity, or conversions
 
 //Function Prototypes Here
-int wordCnt(char *);
-
+int charCnt(char *);
 //Program Execution Begins Here
 int main(int argc, char** argv) {
     //Declare all Variables Here
     const int SIZE=51;
     char phrase[SIZE];
-    short words;
+    short chars;
 
     
     
     cout << "What is the phrase you would like for me "
-            "to count the words in? (no more than 50)"<<endl;
+            "to count the characters in? (no more than 50)"<<endl;
     cin.getline(phrase,SIZE);
     
-    words=wordCnt(phrase);
-    cout <<"you have "<<words<<" words inside your chosen phrase.";
+    chars=charCnt(phrase);
+    cout <<"you have "<<chars<<" characters inside your chosen phrase.";
     
 
     //Exit
     return 0;
 }
-int wordCnt(char *phrase){
-    short words=1;
+int charCnt(char *phrase){
+    short chars=0;
     
     
     while(*phrase != '\0'){
-        if (*phrase==' '){words++;}
+        chars++;
         phrase++;
     }
     
     
-    return words;
+    return chars;
 }
