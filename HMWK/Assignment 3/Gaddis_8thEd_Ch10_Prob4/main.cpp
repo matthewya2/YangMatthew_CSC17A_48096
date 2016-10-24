@@ -16,7 +16,7 @@ using namespace std;
 
 //Function Prototypes Here
 int wordCnt(char *);
-int avgWrds(char *,int[]);
+
 //Program Execution Begins Here
 int main(int argc, char** argv) {
     //Declare all Variables Here

@@ -1,39 +1,50 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
+ // This program demonstrates reading from one file and writing
+ // to a second file.
+ #include <iostream>
+ #include <fstream>
+ #include <string>
+ #include <cctype> // Needed for the toupper function.
+ using namespace std;
 
-/* 
- * File:   main.cpp
- * Author: Matthew
- *
- * Created on October 11, 2016, 6:56 PM
- */
+ int main()
+ {
+ string fileName; // To hold the file name
+ char ch; // To hold a character
+ ifstream inFile; // Input file
 
-#include <cstdlib>
-#include <iostream>
-#include <fstream>
-using namespace std;
+ // Open a file for output.
+ ofstream outFile("out.txt");
 
-/*
- * 
- */
-int main(int argc, char** argv) {
-    fstream file;
-    const int SIZE=4;
-    char data[SIZE] = {'A', 'B', 'C', 'D'};
-    
-    file.open("core.dat", ios::out | ios::binary);
-    
-    file.write(data,sizeof(data));
-    
-    for (int count = 0; count < SIZE; count++)
-    cout << data[count] << " ";
-    cout << endl;
-    cout << ios::binary<< file;
-    
-    file.close();
-    return 0;
-}
+ // Get the input file name.
+ cout << "Enter a file name: ";
+ cin >> fileName;
 
+ // Open the file for input.
+ inFile.open(filename);
+
+ // If the input file opened successfully, continue.
+ if (inFile)
+ {
+ // Read a char from file 1.
+ inFile.get(ch);
+
+ // While the last read operation was
+ // successful, continue.
+ while (inFile)
+ {
+ // Write uppercase char to file 2.
+ outFile.put(toupper(ch));
+
+ // Read another char from file 1.
+ inFile.get(ch);
+ }
+
+// Close the two files.
+ inFile.close();
+ outFile.close();
+ cout << "File conversion done.\n";
+ }
+ else
+ cout << "Cannot open " << fileName << endl;
+ return 0;
+ }
