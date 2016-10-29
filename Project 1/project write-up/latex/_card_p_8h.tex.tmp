@@ -1,0 +1,9 @@
+\section{C\+:/\+Users/\+Matthew/\+Desktop/\+C\+P\+P\+Template/\+CardP.h File Reference}
+\label{_card_p_8h}\index{C\+:/\+Users/\+Matthew/\+Desktop/\+C\+P\+P\+Template/\+Card\+P.\+h@{C\+:/\+Users/\+Matthew/\+Desktop/\+C\+P\+P\+Template/\+Card\+P.\+h}}
+This graph shows which files directly or indirectly include this file\+:
+% FIG 0
+\subsection*{Classes}
+\begin{DoxyCompactItemize}
+\item 
+struct {\bf CardP}
+\end{DoxyCompactItemize}
