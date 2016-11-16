@@ -10,22 +10,21 @@
  *
  * Created on November 15, 2016, 2:44 PM
  */
-
+#include <string>
 #ifndef CARD_H
 #define CARD_H
 
-class Date{
+class Info{
     private:
-        int month;
-        int day;
-        int year;
+        string name;
+        string address;
+        int age;
+        long int phone;
     public: 
-        void print1();                
-        void print2();
-        void print3();
-        bool setDay(int );
-        bool setMonth(int );
-        bool setYear(int );
+        void setName(string );
+        void setAddress(string );
+        void setAge(int );
+        void setPhone(long int );
 };
 
 #endif /* CARD_H */
