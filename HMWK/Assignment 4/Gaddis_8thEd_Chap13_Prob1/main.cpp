@@ -13,6 +13,7 @@ using namespace std;
 int main(int argc, char** argv) {
     Date date;
     int temp;
+    bool error;
     cout << "what is the date? "<<endl;
     cout << "input the year first. (yyyy)"<<endl;
     cin  >> temp;
@@ -20,11 +21,21 @@ int main(int argc, char** argv) {
     
     cout << "Now input the month. (mm)"<<endl;
     cin  >> temp;
-    date.setMonth(temp);
+    error=date.setMonth(temp);
+    while(error==false){
+        cout <<"please enter a valid month 1-12."<<endl;
+        cin>>temp;
+        error=date.setMonth(temp);
+    }
     
     cout << "now input the day.(dd)"<<endl;
     cin  >> temp;
-    date.setDay(temp);
+    error=date.setDay(temp);
+    while(error==false){
+        cout <<"please enter a valid day 1-31."<<endl;
+        cin>>temp;
+        error=date.setDay(temp);
+    }
     
     date.print1();
     date.print2();
