@@ -15,7 +15,7 @@
 #include <iostream>
 #include <string>
 using namespace std;
-#include "Number.h"
+#include "Number3.h"
 
 Number::Number(int number){
     date=number;

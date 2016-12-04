@@ -13,8 +13,8 @@
     <logicalFolder name="SourceFiles"
                    displayName="Source Files"
                    projectFiles="true">
-      <itemPath>Set.cpp</itemPath>
       <itemPath>main.cpp</itemPath>
+      <itemPath>set1.cpp</itemPath>
     </logicalFolder>
     <logicalFolder name="TestFiles"
                    displayName="Test Files"
@@ -43,9 +43,9 @@
       </compileType>
       <item path="Info.h" ex="false" tool="3" flavor2="0">
       </item>
-      <item path="Set.cpp" ex="false" tool="1" flavor2="0">
-      </item>
       <item path="main.cpp" ex="false" tool="1" flavor2="0">
+      </item>
+      <item path="set1.cpp" ex="false" tool="1" flavor2="0">
       </item>
     </conf>
     <conf name="Release" type="1">
@@ -71,9 +71,9 @@
       </compileType>
       <item path="Info.h" ex="false" tool="3" flavor2="0">
       </item>
-      <item path="Set.cpp" ex="false" tool="1" flavor2="0">
-      </item>
       <item path="main.cpp" ex="false" tool="1" flavor2="0">
+      </item>
+      <item path="set1.cpp" ex="false" tool="1" flavor2="0">
       </item>
     </conf>
   </confs>

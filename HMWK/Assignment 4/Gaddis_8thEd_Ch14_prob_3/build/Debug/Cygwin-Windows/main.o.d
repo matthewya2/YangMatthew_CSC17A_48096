@@ -1,3 +1,3 @@
-build/Debug/Cygwin-Windows/main.o: main.cpp Number.h
+build/Debug/Cygwin-Windows/main.o: main.cpp Number3.h
 
-Number.h:
+Number3.h:
