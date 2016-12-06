@@ -13,7 +13,7 @@
 
 #include <cstdlib>
 #include <iostream>
-#include "MilTime.h"
+#include "MilTime_Ch16.h"
 using namespace std;
 
 /*
@@ -26,27 +26,18 @@ int main(int argc, char** argv) {
     
     cout <<"what time is it,(hours) in Military time?"<<endl;
     cin>>milTime;
-    while((milTime%100)>59){
-        cout <<"please enter a valid minute(MM) value, (HHMM format, "
-                "whereas MM cannot be more than 59)"<<endl;
-        cin >>milTime;
-    }
-    while(milTime>2359){
-        cout <<"please enter a valid military time value, it cannot be over 2359"
-                <<endl;
-        cin >>milTime;
-    }
     
     cout <<"how many seconds?"<<endl;
     cin>>milSec;
-    while((milSec)>59){
-        cout <<"please enter a valid second value, whereas seconds cannot"
-                " be more than 59"<<endl;
-        cin >>milSec;
-    }
     
     MilTime mTime;
+    try{                //input validation
     pm=mTime.setTime(milTime,milSec);
+    }
+    catch(string err){
+        cout << "Error: "<<err<<endl;
+        return 0;
+    }
     
     standH=mTime.getHr();
     standM=mTime.getMin();

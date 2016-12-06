@@ -30,6 +30,7 @@ int main(int argc, char** argv) {
     }
     catch(string err){
         cout <<"error: "<<err<<endl;
+        return 0;
     }
     
     date.print1();
