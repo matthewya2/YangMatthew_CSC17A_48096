@@ -10,18 +10,34 @@
  *
  * Created on December 6, 2016, 2:42 PM
  */
-
+#include <cstdlib>  //Rand and Set Random
 #ifndef CARDS_H
 #define CARDS_H
 
 class Deck{
-    private:
+    protected:
         int *freqofC;
-        int cardpik;    //user's car pick
-        int tTurns;     //total turns
         int *cards;
+        int MAX;
     public:
-        Deck(int);
+        
+        void Shuffle();
+};
+class Cards:public Deck{
+    private:
+        int cardPik[2];    //user's car pick
+    public:
+        void Pick();
+        void Display();
+        bool ElimCheck(bool);
+};
+class Game:public Cards{
+    private:
+        int Turns=0;
+    public:
+        void AddTurn(){
+            Turns++;
+        }
 };
 
 

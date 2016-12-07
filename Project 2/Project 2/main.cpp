@@ -26,12 +26,11 @@ using namespace std;
  * 
  */
 int main(int argc, char** argv) {
+    bool isDone = false;            //determines when game is done
     string intro;
     char *intrArr;
     fstream introPr;                //declares prologue file
-    char line[1200];
-    int maxCard;
-    short diff;                     //difficulty
+    char line[1200];                    
     
     const int nameF = 26;               //used for name total length of full name
     const int nameS = 13;               //used for second name length
@@ -93,22 +92,19 @@ int main(int argc, char** argv) {
     cout <<line;
     introPr.close();
     
+    Cards card;
+    card.Shuffle();
+    Game data;
+    do{
+    data.AddTurn();                 //counts turns
+    card.Display();                 //displays cards
+    card.Pick();                    //receives input of card picks from user
     
-    cout << "would you like to play with 12 cards (easy),26 cards (medium), or "
-            "52 cards (hard)?"<<endl;
-    cin <<diff;
-    switch(diff){
-        case 1:{
-            Deck deck(14);
-        }
-        case 2:{
-            Deck deck(28);
-        }
-        case 3:{
-            Deck deck(56);
-        }
-    }
+
     
+    isDone=card.ElimCheck(isDone);
+    
+    }while(!isDone);        //finishes the program if 26 cards are eliminated,
     return 0;
 }
 
