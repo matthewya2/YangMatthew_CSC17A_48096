@@ -11,6 +11,9 @@
  * Created on December 6, 2016, 2:42 PM
  */
 #include <cstdlib>  //Rand and Set Random
+#include <iostream>
+using namespace std;
+
 #ifndef CARDS_H
 #define CARDS_H
 
@@ -33,11 +36,18 @@ class Cards:public Deck{
 };
 class Game:public Cards{
     private:
-        int Turns=0;
+        string Name;
+        int Turns;
     public:
-        void AddTurn(){
-            Turns++;
+        Game(){
+            Turns=0;
         }
+        void Intro();
+        void Turn();
+        void operator++(int){
+            this->Turns++;
+        }
+        void Score();
 };
 
 

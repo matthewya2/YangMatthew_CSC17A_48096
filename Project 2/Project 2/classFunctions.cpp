@@ -7,18 +7,19 @@
 #include <string>
 #include <iostream>
 #include <iomanip>
+#include <cstring>  //strcat
 using namespace std;
 
 void Deck::Shuffle(){
     unsigned seed = time(0);        //creates randomness
     srand(seed);
     
-    MAX=26;
+    MAX=30;
     cards = new int [MAX];
     freqofC = new int [MAX/2];
     int num=0;
     
-    for(int i=0; i<26; ++i) {
+    for(int i=0; i<30; ++i) {
         int num = rand() % (MAX/2) + 1;
         while (freqofC[num-1]>=2) {         //makes sure that no card has the 
             num = rand() % (MAX/2) + 1;          //same value more than twice.
@@ -42,6 +43,8 @@ void Cards::Display(){
             cad21P2="|21 |",cad22P2="|22 |",
             cad23P2="|23 |",cad24P2="|24 |",
             cad25P2="|25 |",cad26P2="|26 |",
+            cad27P2="|27 |",cad28P2="|28 |",
+            cad29P2="|29 |",cad30P2="|30 |",
             cadP1="___", cadP3= "|___|", 
             X="| X |";
     
@@ -60,6 +63,8 @@ void Cards::Display(){
     if (cards[20]==0){cad21P2=X;}   if (cards[21]==0){cad22P2=X;}
     if (cards[22]==0){cad23P2=X;}   if (cards[23]==0){cad24P2=X;}
     if (cards[24]==0){cad25P2=X;}   if (cards[25]==0){cad26P2=X;}
+    if (cards[26]==0){cad27P2=X;}   if (cards[27]==0){cad28P2=X;}
+    if (cards[28]==0){cad29P2=X;}   if (cards[29]==0){cad30P2=X;}
     
     //cards being displayed
     cout << " "<<cadP1<<setw(6)<<cadP1<<setw(6)<<cadP1<<setw(6)<<cadP1<<setw(6)
@@ -86,9 +91,12 @@ void Cards::Display(){
             <<cad24P2<<endl;
     cout <<cadP3<<" "<<cadP3<<" "<<cadP3<<" "<<cadP3<<" "<<cadP3<<" "<<cadP3
             <<endl;
-    cout << " "<<cadP1<<setw(6)<<cadP1<<endl;
-    cout <<cad25P2<<" "<<cad26P2<<endl;
-    cout <<cadP3<<" "<<cadP3<<endl<<endl;
+    cout << " "<<cadP1<<setw(6)<<cadP1<<setw(6)<<cadP1<<setw(6)<<cadP1<<setw(6)
+            <<cadP1<<setw(6)<<cadP1<<endl; 
+    cout <<cad25P2<<" "<<cad26P2<<" "<<cad27P2<<" "<<cad28P2<<" "<<cad29P2<<" "
+            <<cad30P2<<endl;
+    cout <<cadP3<<" "<<cadP3<<" "<<cadP3<<" "<<cadP3<<" "<<cadP3<<" "<<cadP3
+            <<endl<<endl;
     
     
     
@@ -96,8 +104,39 @@ void Cards::Display(){
 void Cards::Pick(){
     cout <<"what is the first card you want to check?"<<endl;
     cin >>cardPik[0];
+    while (cardPik[0]<1 || cardPik[0]>MAX) {
+        cout << "you must pick a card "
+            "that exists on the screen above, and that does not have an X "
+            "on it."<<endl;
+        cin >>cardPik[0];
+    }
+    
+    while(cards[cardPik[0]-1]==0){
+        cout << "You have already picked that card. Please pick a card"
+                " that is on the board, and that does not have an X on it.";
+        cin  >> cardPik[0];
+    }
+
     cout <<"how about your second?"<<endl;
     cin>>cardPik[1];
+    
+    while (cardPik[1]<1 || cardPik[1]>MAX) {
+        cout << "you must pick a card "
+            "that exists on the screen above, and that does not have an X "
+            "on it."<<endl;
+        cin >>cardPik[1];
+    }
+    while (cardPik[0]==cardPik[1]){
+            cout << "you must pick a number that is different than the first "
+                    <<endl<<"card you have picked. Pick another card for your"
+                    " second card."<<endl;
+            cin >>cardPik[1];
+        }
+    while(cards[cardPik[1]-1]==0){
+        cout << "You have already picked that card. Please pick a card"
+                " that is on the board, and that does not have an X on it.";
+        cin  >> cardPik[1];
+    }
     
     //outputs the results of the cards
     cout << endl << "Card number "<< cardPik[0]<<" has a "<<
@@ -119,11 +158,61 @@ bool Cards::ElimCheck(bool isDone){
     int cnt=0;                     
         for(int i=0; i<MAX; ++i)
             if( cards[i]==0 ) ++cnt;
-        if(cnt==26) isDone = true;
+        if(cnt==MAX) isDone = true;
         // displays the number of terminated cards
-        cout << "You have eliminated " << cnt << " cards out of 26." << endl;
+        cout << "You have eliminated " << cnt << " cards out of 30." << endl;
         
         return isDone;
             
         
+}
+
+void Game::Intro(){
+    const int nameF = 26;               //used for name total length of full name
+    const int nameS = 13;               //used for second name length
+    char fName[nameF];                  //first name
+    char sName[nameS];                  //second name
+    
+    cout <<"please enter your first Name with a space after: ";
+    cin.getline(fName,nameS);
+    cout <<"please enter your second Name: ";
+    cin.getline(sName,nameS);
+    strcat(fName,sName);
+    Name=fName;
+    
+    cout << "Hello, "<<fName<<"!"<<endl;
+}
+
+void Game::Turn(){
+    cout <<"This is turn: "<<Turns<<endl;
+}
+void Game::Score(){
+    cout << "You have Won! you have completed the game in " <<Turns<<
+            " turns.";
+
+    cout << endl;
+    
+        //gives special message if you had a perfect game
+    switch (Turns){
+            case (15): cout << "WOW! A perfect game! You're amazing!!";
+            default: cout << "";
+    }
+    
+        //tells you how well you did on the game if you did not have 
+        //a perfect game
+    
+    if (Turns>15 && Turns<=20){
+        cout <<"That was a pretty awesome game!";
+    }
+    if (Turns>=21 && Turns<25){
+        cout << "That was a pretty good game, although you can do better.";
+    }
+    if (Turns>=26 && Turns<=34){
+        cout << "a decent game. Try again!";
+    }
+    if (Turns>35){
+        cout << "That was a not so good game. replay?";
+    }
+    cout << endl;
+    cout << "Thanks for playing, "<<Name;
 }

@@ -31,28 +31,20 @@ int main(int argc, char** argv) {
     char *intrArr;
     fstream introPr;                //declares prologue file
     char line[1200];                    
+    Game data;
     
-    const int nameF = 26;               //used for name total length of full name
-    const int nameS = 13;               //used for second name length
-    char fName[nameF];                  //first name
-    char sName[nameS];                  //second name
-    cout <<"please enter your first Name with a space after: ";
-    cin.getline(fName,nameS);
-    cout <<"please enter your second Name: ";
-    cin.getline(sName,nameS);
-    strcat(fName,sName);
     
     
     introPr.open("introInstructions.dat", ios::out | ios::binary);
     
-        
-    cout << "Hello, "<<fName<<"!"<<endl;
+    data.Intro();
+    
     intro=  "This game is called the Card Matching Game. \n\n"
             "~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~"
             "~~~~~~~~~~~~\n\n"
             "The goal of the game is to eliminate all the cards"
                     " you see below,\n"
-            "which are numbered 1-26. All of which have one number underneath \n"
+            "which are numbered 1-30. All of which have one number underneath \n"
             
             "them from 1-13. These cards contain two of each number from 1-13.\n"
             
@@ -94,17 +86,19 @@ int main(int argc, char** argv) {
     
     Cards card;
     card.Shuffle();
-    Game data;
+    
     do{
-    data.AddTurn();                 //counts turns
+    data++;                         //operator overload counts turns
     card.Display();                 //displays cards
+    data.Turn();                    //displays turns
     card.Pick();                    //receives input of card picks from user
     
 
     
     isDone=card.ElimCheck(isDone);
     
-    }while(!isDone);        //finishes the program if 26 cards are eliminated,
+    }while(!isDone);        //finishes the program if 26 cards are eliminated
+    
     return 0;
 }
 
