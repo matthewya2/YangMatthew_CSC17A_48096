@@ -25,6 +25,7 @@ using namespace std;
 /*
  * 
  */
+
 int main(int argc, char** argv) {
     bool isDone = false;            //determines when game is done
     string intro;
@@ -88,17 +89,25 @@ int main(int argc, char** argv) {
     card.Shuffle();
     
     do{
+        
     data++;                         //operator overload counts turns
     card.Display();                 //displays cards
     data.Turn();                    //displays turns
     card.Pick();                    //receives input of card picks from user
     
+    
+    
 
-    
+    try{
     isDone=card.ElimCheck(isDone);
-    
+    }
+    catch(string error){
+        cout <<error;
+    }
     }while(!isDone);        //finishes the program if 26 cards are eliminated
     
+    card.~Deck();
+    delete [] intrArr;
     return 0;
 }
 

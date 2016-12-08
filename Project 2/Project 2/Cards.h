@@ -23,9 +23,16 @@ class Deck{
         int *cards;
         int MAX;
     public:
-        
+        Deck(){
+            MAX=30;
+        }
         void Shuffle();
+        ~Deck(){
+            delete [] freqofC;
+            delete [] cards;
+        }
 };
+
 class Cards:public Deck{
     private:
         int cardPik[2];    //user's car pick

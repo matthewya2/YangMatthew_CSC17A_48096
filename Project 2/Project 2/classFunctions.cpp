@@ -14,7 +14,7 @@ void Deck::Shuffle(){
     unsigned seed = time(0);        //creates randomness
     srand(seed);
     
-    MAX=30;
+    
     cards = new int [MAX];
     freqofC = new int [MAX/2];
     int num=0;
@@ -101,15 +101,16 @@ void Cards::Display(){
     
     
 }
+
 void Cards::Pick(){
     cout <<"what is the first card you want to check?"<<endl;
     cin >>cardPik[0];
-    while (cardPik[0]<1 || cardPik[0]>MAX) {
-        cout << "you must pick a card "
-            "that exists on the screen above, and that does not have an X "
-            "on it."<<endl;
-        cin >>cardPik[0];
+    while(cardPik[0]<1 || cardPik[0]>MAX) {
+        cout<<"you must pick a card that exists on the screen above,"
+                "and that does not have an X on it.";
+        cin>>cardPik[0];
     }
+    
     
     while(cards[cardPik[0]-1]==0){
         cout << "You have already picked that card. Please pick a card"
@@ -161,7 +162,11 @@ bool Cards::ElimCheck(bool isDone){
         if(cnt==MAX) isDone = true;
         // displays the number of terminated cards
         cout << "You have eliminated " << cnt << " cards out of 30." << endl;
-        
+        if(cnt<0 || cnt>30){
+            string error;
+            error ="an error has occurred, exiting program.";
+            throw error;
+        }
         return isDone;
             
         
@@ -186,6 +191,7 @@ void Game::Intro(){
 void Game::Turn(){
     cout <<"This is turn: "<<Turns<<endl;
 }
+
 void Game::Score(){
     cout << "You have Won! you have completed the game in " <<Turns<<
             " turns.";
