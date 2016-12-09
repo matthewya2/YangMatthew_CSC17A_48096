@@ -20,37 +20,51 @@ using namespace std;
 class Deck{
     protected:
         int *freqofC;
+        
         int *cards;
+        
         int MAX;
+        
     public:
         Deck(){
             MAX=30;
         }
         void Shuffle();
+        
         ~Deck(){
             delete [] freqofC;
             delete [] cards;
         }
+        
 };
 
 class Cards:public Deck{
     private:
         int cardPik[2];    //user's car pick
+        
     public:
         void Pick();
+        
         void Display();
+        
         bool ElimCheck(bool);
+        
 };
+
 class Game:public Cards{
     private:
         string Name;
+        
         int Turns;
+        
     public:
         Game(){
             Turns=0;
         }
         void Intro();
+        
         void Turn();
+        
         void operator++(int){
             this->Turns++;
         }

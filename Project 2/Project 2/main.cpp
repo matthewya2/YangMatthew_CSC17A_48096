@@ -6,7 +6,7 @@
 
 /* 
  * File:   main.cpp
- * Author: rcc
+ * Author: Matthew Yang
  *
  * Created on December 6, 2016, 2:39 PM
  */
@@ -18,6 +18,7 @@
 #include <cstring>  //strcat
 #include <string>   //names
 #include <fstream>
+
 #include "Cards.h"
 
 using namespace std;
@@ -28,11 +29,12 @@ using namespace std;
 
 int main(int argc, char** argv) {
     bool isDone = false;            //determines when game is done
-    string intro;
-    char *intrArr;
+    string intro;                   //intro holder
+    char *intrArr;                  //binary file for intro
     fstream introPr;                //declares prologue file
-    char line[1200];                    
-    Game data;
+    char line[1200];                //binary places into this file            
+    
+    Game data;                      //turns=0
     
     
     
@@ -55,34 +57,51 @@ int main(int argc, char** argv) {
             
             "you what number is underneath them. If these two cards match, "
             "then\n"
-            "they are eliminated from the game, "
-            "this will be indicated out loud,\n"
+            
+            "they are eliminated from the game, this will be indicated out loud,\n"
+            
             "and I will draw an X on the card. If these cards do not match,"
             " then\n"
+            
             "they will simply be placed back as they were before I flipped "
             "them.\n"
+            
             "The game is over when all cards are eliminated,(when all cards "
             "have\n"
+            
             "X's on top of them).\n\n"
+            
+            
             "NOTE: To get the full experience of this game, do not scroll up to\n"
             
             "see what I said a card was on a previous turn, "
+            
             "this game is based on memory.\n\n"
-             "~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~"
+             
+            "~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~"
                     "~~~~~~~~~~~~~~~~~~~~~~~~~~~~~\n\n"
-            "           GAME START!\n"
+            "          "
+            " GAME START!\n"
                 "___________________________________\n";
     
     //outputs the intro and rules to the game into a binary file
     intrArr = new char[1200];
+    
     strcpy(intrArr,intro.c_str());
+    
     introPr.write(intrArr,1200);
+   
     introPr.close();
+    
     //reads them from the file
     introPr.open("introInstructions.dat", ios::in | ios::binary);
+    
     introPr.seekg(0, ios::beg);
+    
     introPr.read(line,1200);
+    
     cout <<line;
+    
     introPr.close();
     
     Cards card;
@@ -90,24 +109,29 @@ int main(int argc, char** argv) {
     
     do{
         
-    data++;                         //operator overload counts turns
-    card.Display();                 //displays cards
-    data.Turn();                    //displays turns
-    card.Pick();                    //receives input of card picks from user
-    
-    
-    
+        data++;                         //operator overload counts turns
 
-    try{
-    isDone=card.ElimCheck(isDone);
-    }
-    catch(string error){
-        cout <<error;
-    }
-    }while(!isDone);        //finishes the program if 26 cards are eliminated
+        card.Display();                 //displays cards
+
+        data.Turn();                    //displays turns
+
+        card.Pick();                    //receives input of card picks from user
+
+
+        try{                            //error check/exception here
+            isDone=card.ElimCheck(isDone);
+        }
+        catch(string error){
+            cout <<error;               //outputs exception message
+        }
+    }while(!isDone);                //finishes the program if 26 cards are eliminated
     
-    card.~Deck();
-    delete [] intrArr;
+    
+    data.Score();                   //gives you the score of your game
+    
+    card.~Deck();                   //deletes deck
+    delete [] intrArr;              //deletes character array for intro
+    
     return 0;
 }
 
