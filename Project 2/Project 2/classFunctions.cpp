@@ -210,6 +210,10 @@ void Cards::Pick(){
 bool Cards::ElimCheck(bool isDone){
     int cnt=0;    
     
+    for(int i=0;i<MAX;i++)
+        cards[i]=0;
+    
+    
         for(int i=0; i<MAX; ++i){
             if( cards[i]==0 ) ++cnt;
         }
@@ -265,7 +269,7 @@ void Game::Score(){
     switch (Turns){
             case 15: cout << "WOW! A perfect game! You're amazing!!";
             
-            default: cout << "";
+ 
     }
     
         //tells you how well you did on the game if you did not have 

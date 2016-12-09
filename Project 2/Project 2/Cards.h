@@ -61,7 +61,7 @@ class Game:public Cards{
         Game(){
             Turns=0;
         }
-        void Intro();
+        virtual void Intro();
         
         void Turn();
         
